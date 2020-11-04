@@ -16,8 +16,8 @@
 
 
 <hr>
+```
 
-'''
 package day08.homwork;
 
 import java.util.Scanner;
