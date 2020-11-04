@@ -74,14 +74,14 @@ public class Test03 {
 		
 		int b;
 		
-		for(int i = 0; i<nums.length; ++i) {
-			for(int j = 0; j< nums.length; ++j) {
+		for(int i = nums.length - 1 ; i > 0;  --i) {
+		for(int j = 0; j < i; ++j) {
 				
-				if(nums[j] > nums[j+1]) {
+			if(nums[j] > nums[j+1]) {
 					
-					b = nums[j];
-					nums[j] = nums[j+1];
-					nums[j+1] = b;
+				b = nums[j];
+				nums[j] = nums[j+1];
+				nums[j+1] = b;
 					
 				}				
 				
