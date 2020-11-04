@@ -14,6 +14,7 @@
 
 4. 오름차순(작은->큰)으로 정렬하여 모든 원소를 출력  ==> 버블 정렬 알고리즘 검색해서 ... 
 
+
 <hr>
 
 package day08.homwork;
@@ -28,7 +29,7 @@ public class Test03 {
 		
 		int nums[] = new int[6];
 		
-		for(int i = 0; i < nums.length; ++i) { //Scanner를 사용하여 6개의 데이터를 입력 받고, 이들을 nums 배열에 저장
+		for(int i = 0; i < nums.length; ++i) { //Scanner를 사용하여 6개의 데이터를 입력 받고, 이들을 nums 배열에 저장s
 			
 			System.out.print("[" + i + "] 번째 배열 입력 : ");
 			nums[i] = sc.nextInt();
