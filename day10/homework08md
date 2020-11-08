@@ -1,0 +1,78 @@
+package day09.homework;
+
+import java.util.Scanner;
+
+//중-6: 로또생성기 만들기 
+//	step1) 사용자에게 1 ~ 45 중 6개의 숫자를 입력 받습니다.
+//	step2) 컴퓨터는 로또 번호 6개를 생성합니다. 배열의 크기는 6이고 int형입니다.
+//	step3) 1 ~ 45 중 6개의 숫자를 배열에 담습니다. 중복된 원소가 있으면 안됩니다.
+//	step4) (구현 가능하다면) 오름차순 정렬을 합니다.
+//	step5) 배열 결과를 출력합니다.
+//	step6) 사용자가 몇 개의 번호를 맞췄는지 출력하세요.
+
+public class Test08 {
+
+	public static void main(String[] args) {
+		
+		int arrUser[] = new int[6];
+		int arrCom[] = new int[6];
+		Scanner sc = new Scanner(System.in);
+		
+		//1 User
+		for(int i = 0; i< arrUser.length; i++) {
+			System.out.println("6개중 "+i+" 번 숫자 입력 :");
+			arrUser[i] = sc.nextInt();
+			
+		}
+		
+		//2 Com
+		int b;
+		
+		for(int i = 0; i < arrCom.length; i++) {
+			
+			arrCom[i] = (int) Math.floor(Math.random()*45 +1); 
+			
+			
+			for(int j = 0; j < i; j++) { // 중복제거 (i 와  i보다 낮은 들 j의 for문 을 비교)
+				
+				if(arrCom[i] == arrCom[j]) {
+					
+					i--;
+				}
+				
+				
+			}
+						
+		}
+		
+		
+		int count = 0;
+		
+		for(int i = 0; i < arrUser.length; i++) {
+			for(int j = 0; j < arrCom.length; j++) {
+				
+				if(arrUser[i] == arrCom[j]) 
+					count++;
+				
+				
+			}
+			
+		}
+	
+			
+		for(int i =0; i<arrUser.length; i++)
+			System.out.println("User["+i+"] : " + arrUser[i]);
+		
+		
+		for(int i =0; i<arrCom.length; i++)
+			System.out.println("Com["+i+"] : " + arrCom[i]);
+		
+		System.out.println("사용자가 맞춘 번호 수 : " + count);
+		
+		
+		
+		
+
+	}
+
+}
