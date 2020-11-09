@@ -137,51 +137,7 @@ public class Test04 {
 			
 			System.out.println("D-day : " + (end - start));
 			
-//			switch (month)  {
-//			
-//			case 1: {
-//				
-//				for(int i = 0; i < month-1; i++) {
-//					
-//					t += day ;
-//				
-//				}
-//				
-//				break;
-//			}
-//			
-//			case 2: {
-//				
-//				for(int i = 0; i < month-1; i++) {
-//					
-//					t += dates[i];
-//				
-//				}t +=day;
-//				
-//				break;
-//			}
-//			case 3: {
-//				
-//				for(int i = 0; i < month-1; i++) {
-//					
-//					t += dates[i];
-//				
-//				}t +=day;
-//				
-//				break;
-//			}
-//			case 4: {
-//				
-//				for(int i = 0; i < month-1; i++) {
-//					
-//					t += dates[i];
-//					
-//				
-//				}t +=day;
-//				
-//				break;
-//			}
-//			......
+
 	
 
 	}
