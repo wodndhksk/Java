@@ -1,3 +1,4 @@
+```java
 package day09.homework;
 
 import java.util.Scanner;
@@ -52,3 +53,4 @@ public class Test02 {
 	}	
  
 }
+```
