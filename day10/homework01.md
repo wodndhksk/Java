@@ -1,3 +1,4 @@
+```java
 package day09.homework;
 
 public class Test01 {
@@ -35,3 +36,4 @@ public class Test01 {
 	}
 
 }
+```
