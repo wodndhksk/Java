@@ -147,7 +147,7 @@ public class Quiz02 {
 
 ```
 
-
+#결과값
 ```java
 홍길동 
 10 20 30
