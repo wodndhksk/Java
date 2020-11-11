@@ -3,6 +3,8 @@ package day12.quiz;
 
 import java.util.Scanner;
 
+
+
 /*
  * 클래스 : Student
  *  필드 : 이름, 국, 영, 수, 평균, 등급
@@ -36,7 +38,7 @@ class Student{
 		name = n;
 		kor = k;
 		eng = e;
-		m = math;
+		math = m;
 					
 	}
 	int setMean(){
@@ -65,13 +67,17 @@ class Student{
 		
 		return a;
 	}
+	 
+	 String getData() {
+		 return this.name + "\t국어: " + this.kor + "\t영어: " + this.eng + "\t수학: " +this.math + "\t등급: " + setGrade();
+	 }
 	
 	 //printData() : 객체의 모든 정보(이름, 국, 영, 수, 평균, 등급)를 sysout
 	
-	 String printData() {
+	 void printData() {
 		 
-		 return (this.name + "\t국어: " + this.kor + "\t영어: " + this.eng + "\t수학: " +this.math + "\t등급: " + setGrade());
-		 
+		 //return (this.name + "\t국어: " + this.kor + "\t영어: " + this.eng + "\t수학: " +this.math + "\t등급: " + setGrade());
+		 System.out.println(getData());
 	 }
 	 
 	 
@@ -131,10 +137,10 @@ public class Quiz02 {
 			
 			s.avg = s.setMean();
 			
-			System.out.println("학생 정보 ==>" +s.printData()+"\n");
+			System.out.print("학생 정보 ==>");
 			
-			String x  = s.printData();
-			all[i] = new String(x);
+			s.printData();
+			all[i] = s.getData();
 			
 		}
 		for(int i = 0; i < arr.length; ++i)
@@ -145,51 +151,4 @@ public class Quiz02 {
 
 }
 
-```
-
-#결과값
-```java
-홍길동 
-10 20 30
-피카츄 506070
-이름을 입력하세요 :
-aa
-국어 점수 :
-50
-영어 점수 :
-50
-수학 점수 :
-50
-학생 정보 ==>aa	국어: 50	영어: 50	수학: 50	등급: F
-이름을 입력하세요 :
-bb
-국어 점수 :
-70
-영어 점수 :
-70
-수학 점수 :
-70
-학생 정보 ==>bb	국어: 70	영어: 70	수학: 70	등급: C
-이름을 입력하세요 :
-cc
-국어 점수 :
-80
-영어 점수 :
-80
-수학 점수 :
-80
-학생 정보 ==>cc	국어: 80	영어: 80	수학: 80	등급: B
-이름을 입력하세요 :
-d
-국어 점수 :
-90
-영어 점수 :
-90
-수학 점수 :
-90
-학생 정보 ==>d	국어: 90	영어: 90	수학: 90	등급: A
-aa	국어: 50	영어: 50	수학: 50	등급: F
-bb	국어: 70	영어: 70	수학: 70	등급: C
-cc	국어: 80	영어: 80	수학: 80	등급: B
-d	국어: 90	영어: 90	수학: 90	등급: A
 ```
