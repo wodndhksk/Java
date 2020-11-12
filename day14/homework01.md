@@ -6,7 +6,7 @@ public class Tourist {
 	 private String name;
 	 static private String destination;
 	 private int budget;
-	 public int age;
+	 private int age;
 	 // name
 	 
 	 
@@ -20,7 +20,7 @@ public class Tourist {
 	 }
 	 String getInfo() {
 		 
-		 return "이름 : " + name + " 나이 : "  + age; 
+		 return "이름 : " + name + ", 나이 : "  + age; 
 	 }
 	 
 	 void setName(String name) {
@@ -32,6 +32,13 @@ public class Tourist {
 		 return name;
 	 }
 	 
+	 void setAge(int age) {
+		 this.age = age;
+	 }
+	 
+	 int getAge() {
+		 return age;
+	 }
 	 // destination
 	 static void setDestination(String destination) {
 		 Tourist.destination = destination;
@@ -57,6 +64,7 @@ public class Tourist {
 	 }
 
 }
+
 ```
 #main
 ```java
@@ -76,6 +84,10 @@ public class Quiz01 {
 		
 		Tourist t1 = new Tourist();
 		Tourist arr[] = new Tourist[5];
+		
+		for(int i = 0; i<arr.length; i++) { //Exception in thread "main" java.lang.NullPointerException
+			arr[i] = new Tourist();
+		}
 		
 		
 		
@@ -108,25 +120,35 @@ public class Quiz01 {
 		//2. 여행객 추가 
 		case 2: {
 			
+			if(b >= arr.length) {
+				System.out.println("회원 정보가 가득 찼습니다!");
+				
+				break;
+			}
+			
 			System.out.println("이름과 나이, 예산을 입력하세요 : ");	
 			
 			//for(int i = 0; i < arr.length; ++i) {
 				//arr[i].setInfo(sc.next(), sc.nextInt(),sc.nextInt());
 			
-			for(int i = 0; i<arr.length; ++i) {
+			//for(int i = 0; i<arr.length; ++i) {
 				String name = sc.next(); 
-				System.out.println(name);
-				int age = sc.nextInt();
-				int budget = sc.nextInt();
-				arr[i].setInfo(name , age , budget);
+				//System.out.println(name);
 				
-			}
-//				b += 1;
-//				
-//				if(b >= arr.length) {
-//					System.out.println("회원 정보가 가득 찼습니다!");
-//					
-//				}
+				int age = sc.nextInt();
+				//System.out.println(age);
+				
+				int budget = sc.nextInt();
+				//System.out.println(budget);
+				
+				arr[b].setName(name);
+				arr[b].setAge(age);
+				arr[b].setBudget(budget);
+				
+			//}
+				b += 1;
+				
+			
 				
 				
 				
@@ -140,8 +162,11 @@ public class Quiz01 {
 		}
 		//3. 모든 여행객 정보 보기
 		case 3: {
-			for(int i = 0; i < arr.length; ++i)
-				System.out.println(arr[i]);
+			for(int i = 0; i < arr.length; ++i) {
+				System.out.print(arr[i].getInfo());
+				
+				System.out.println(" , 목적지" + Tourist.getDestination());
+			}
 			break;
 		}
 		//4. 전체 예산 보기
@@ -151,8 +176,9 @@ public class Quiz01 {
 				
 				int a = arr[i].getBudget() ; 
 				total += a;
-				System.out.println("전체 예산 : " + total);
+				
 			}
+			System.out.println("전체 예산 : " + total);
 //			total = t1.getBudget()* arr.length;
 			System.out.println();
 	
@@ -160,22 +186,20 @@ public class Quiz01 {
 		}
 		//5. VIP 조회 
 		case 5: {
-			
+			int max = 0;
+			String info = "";
 			for(int i =0; i<arr.length; ++i) {
 				
-				int max = 0;
-				String name = null;
 				
 				if(max < arr[i].getBudget()) {
 					
 					max = arr[i].getBudget();
-					name = arr[i].getInfo();
+					info = arr[i].getInfo();
 				}
-				System.out.println("VIP 정보 : " + name + "\t"+ max);
 				
-				
+							
 			}
-			
+			System.out.println("VIP 정보 ==> " + info  +", 예산 : "+ max);
 	
 			break;
 		}
@@ -189,22 +213,6 @@ public class Quiz01 {
 		
 		
 	}//while 
-		
-//		for(int i = 0; i < arr.length; ++i) {
-//			
-//			String name = sc.next();
-//			int age = sc.nextInt();
-//			
-//			arr[i] = t1.setInfo(name, age);
-//			
-//					
-//		}
-		
-		
-		//System.out.println(Tourist.menu());
-		//t1.setDestination(sc.next());
-		//System.out.println(t1.getDestination());
-		
 		
 		
 
