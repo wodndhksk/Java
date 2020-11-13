@@ -7,7 +7,6 @@ public class Tourist {
 	 static private String destination;
 	 private int budget;
 	 private int age;
-	 // name
 	 
 	 
 	 void setInfo(String name, int age, int budget ){
@@ -58,10 +57,6 @@ public class Tourist {
 		 return budget;
 	 }
 	 
-	  public static String menu(){
-		 
-		return "1. 목적지 설정 \n2. 여행객 추가 \n3. 모든 여행객 정보 보기 \n4. 전체 예산 보기 \n5. VIP 조회 \n0. 종료 ";
-	 }
 
 }
 
@@ -105,7 +100,7 @@ public class Quiz01 {
 			
 			//메뉴 호출과 원하는 숫자 입력하기;
 			int btn;
-			System.out.println(Tourist.menu());
+			System.out.println( "1. 목적지 설정 \n2. 여행객 추가 \n3. 모든 여행객 정보 보기 \n4. 전체 예산 보기 \n5. VIP 조회 \n0. 종료 ");
 			btn = sc.nextInt();
 			
 		switch (btn) {
@@ -128,18 +123,11 @@ public class Quiz01 {
 			
 			System.out.println("이름과 나이, 예산을 입력하세요 : ");	
 			
-			//for(int i = 0; i < arr.length; ++i) {
-				//arr[i].setInfo(sc.next(), sc.nextInt(),sc.nextInt());
-			
-			//for(int i = 0; i<arr.length; ++i) {
 				String name = sc.next(); 
-				//System.out.println(name);
-				
+		
 				int age = sc.nextInt();
-				//System.out.println(age);
 				
-				int budget = sc.nextInt();
-				//System.out.println(budget);
+				int budget = sc.nextInt();		
 				
 				arr[b].setName(name);
 				arr[b].setAge(age);
@@ -149,15 +137,6 @@ public class Quiz01 {
 				b += 1;
 				
 			
-				
-				
-				
-				
-//				if(arr[i] != null) {
-//					continue;
-//				}
-			//}
-			
 			break;
 		}
 		//3. 모든 여행객 정보 보기
@@ -165,7 +144,7 @@ public class Quiz01 {
 			for(int i = 0; i < arr.length; ++i) {
 				System.out.print(arr[i].getInfo());
 				
-				System.out.println(" , 목적지" + Tourist.getDestination());
+				System.out.println(" , 목적지 : " + Tourist.getDestination());
 			}
 			break;
 		}
@@ -179,7 +158,6 @@ public class Quiz01 {
 				
 			}
 			System.out.println("전체 예산 : " + total);
-//			total = t1.getBudget()* arr.length;
 			System.out.println();
 	
 			break;
