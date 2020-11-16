@@ -39,28 +39,41 @@ class Sniper extends Unit { // 자식 클래스
 	
 	public Sniper(String name, int hp, int att) {
 		super("저격수 ", 400, 100);
-		this.alive = true;
-		
+		this.alive = true;	
 		
 	}
 		
 		 
-	 
-	
 	// attack 오버라이드 
 	// 1. 10% 확률로 헤드샷 (상대 즉사)
 	// 2. 나머지 확률로 평타(일반 공격, 상대 hp를 100만큼 깎는다.)
 	@Override
 	public void attack(Unit enemy) {
 		
+		if(Math.random() < 0.1) {
+			enemy.hp = 0;
+			enemy.alive = false;
+			
+		}
+		else {
+			enemy.hp -= 100;
+		}
 		
-		enemy =(Unit) (Math.random()<0.1 ? this.alive = false : super.hp -100);
+		if(enemy.hp <= 0) {
+			
+			enemy.alive =false;
+		}
+		
+		
 	}
 }
 
 class Tank extends Unit {
-	Tank(){};
+	Tank(){
+		
+	};
 	// 객체 생성되면, 자동으로 name은 "탱크", hp는 4000, att는 50
+	
 	public Tank(String name, int hp, int att) {
 		super("탱크 ", 4000, 50);
 		this.alive = true;
@@ -72,8 +85,24 @@ class Tank extends Unit {
 	@Override
 	public void attack(Unit enemy) {
 	
+		if(Math.random()< 0.3){
+			
+			enemy.hp *= 0.7;
+			
+		}
+		else {
+			enemy.hp -= 50;
+		}
 		
-		enemy = (Unit)(Math.random()< 0.3 ? this.alive = false  : this.hp -50);
+		
+		if(enemy.hp <= 0) {
+			
+			enemy.alive =false;
+			
+		}
+		
+		
+		
 	}
 }
 public class Quiz02 {
@@ -85,29 +114,27 @@ public class Quiz02 {
 		Unit arr[]= new Unit[2];// = {new Sniper(),new Tank()};
 		
 		for(int i = 0; i < arr.length; i++)
-			arr[i] = (Unit)(Math.random()<=0.5 ? new Sniper() : new Tank());
+			arr[i] = (Math.random()<=0.5 ? new Sniper("저격수 ", 400, 100) : new Tank("탱크 ", 4000, 50));
 		
 		while(true) {
 			
 			arr[0].attack(arr[1]);
 			arr[1].attack(arr[0]);
 			
-			if(arr[0].hp>=0) {
-				arr[0].alive = false;
+			if(!arr[0].alive) {
+				
 				System.out.println(arr[0].name + " 사망 !! 남은 체력 : " + arr[0].hp );
 				break;
 			}
-			else if(arr[1].hp >=0) {
-				arr[1].alive = false;
-				System.out.println(arr[1].name + " 사망 !! 남은 체력 : " + arr[0].hp );
+			else if(!arr[0].alive) {
+				
+				System.out.println(arr[1].name + " 사망 !! 남은 체력 : " + arr[1].hp );
 				break;
 			}
 		}
 		
 		
-		
-		
-		
+	
 		
 	}
 }
