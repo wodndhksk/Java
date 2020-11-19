@@ -12,29 +12,38 @@ public class Test02 {
 
 	public static void main(String[] args) {
 		String s;
-		int  count = 0;
+		
+		int count = 0;
+		int count2 = 0;
 		Scanner sc= new Scanner(System.in);
 		
 		while(true) {
 			System.out.println("문자열 입력 : ");
-			s = sc.next();
+			s = sc.nextLine();
 			
 			for(int i = 0; i<s.length(); i++) {
-				if((s.charAt(i) == 97)) // a 아스키
+				if((s.trim().charAt(i) == 97)) // a 아스키
 					count++;
+			
+				
 			}
 			
-			System.out.println(count);
-			System.out.println(s.trim().length());
 			
+			
+			System.out.println(count);		// 'a' 갯수 
+			System.out.println((s.replaceAll("\\s+","")).length()); //공백등을 제외한 문자 총 갯수 
+			
+//			while(true) {
+//				s = sc.nextLine();
+//				if(s.length() == 0) {
+//					break;
+//				}
+//			
+//			}
+			System.out.println(s.split(" ").length); // 단어의 갯수 
 			break;
 		}
-		
-		
-		
-		
-		
-		
+	
 
 	}
 
@@ -138,10 +147,13 @@ public class Test01 {
 				//3) 이메일은 모두 출력합니다.
 				System.out.println(email.substring(0,email.indexOf("@")));
 				
-				String result = String.join(email, password1);
+				String answer = password1.substring(0,2);
+				for (int i = 0; i < password1.substring(2).length(); i++)
+					answer += "*";
 				
-				result = password1.replaceAll("[3-9]", "*");
-				System.out.println(result);
+				System.out.println(answer);
+				System.out.println(email);
+	
 				break;
 				
 				
@@ -157,5 +169,6 @@ public class Test01 {
 	}
 
 }
+
 
 ```
