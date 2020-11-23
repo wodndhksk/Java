@@ -1,3 +1,4 @@
+```java
 package day21.homework;
 
 import java.text.DecimalFormat;
@@ -176,3 +177,4 @@ public class Test01 {
 	}
 
 }
+```
