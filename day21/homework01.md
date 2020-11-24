@@ -88,7 +88,7 @@ public class Test01 {
 //		0) 종료 
 	//
 		
-		String nation, capital, population;
+		String nation;
 		
 		while(true) {
 			
@@ -107,8 +107,6 @@ public class Test01 {
 			//	Nation na1 = new Nation(sc.next(),sc.next(),sc.next());
 				
 				list.add(na.getNation());
-//				list.add(na.getCapital());
-//				list.add(na.getPopulation());
 				
 				continue;
 			}
