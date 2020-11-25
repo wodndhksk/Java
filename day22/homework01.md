@@ -84,26 +84,26 @@ class englishQuiz{
 		List<String> keyList = new ArrayList<>(hashMap.keySet());
 		List<String> valueList = new ArrayList<>(hashMap.values());
 		Random random = new Random();
-		String randomValue = valueList.get( random.nextInt(valueList.size()) );
+		String randomKey = keyList.get( random.nextInt(keyList.size()) );
 		
-		this.answer = randomValue;
+		this.quiz = randomKey;
 		
-		System.out.println(randomValue+"(은)는 영어로? ");
+		System.out.println(hashMap.get(quiz)+"(은)는 영어로? ");
 		answer = sc.next();
 		
-//		if(randomValue == null) {
-//			System.out.println("단어를 추가해 주세요 ");
-//		}
-//		else if(answer.equals(hashMap.getKey())) {
-//			System.out.println("정답! ");
-//			
-//		}
-//		
-//		else {
-//			System.out.println("땡!");
-//			System.out.println(hashMap.keySet());
-//		}
-//		
+		if(randomKey == null) {
+			System.out.println("단어를 추가해 주세요 ");
+		}
+		else if(answer.equals(randomKey)) {
+			System.out.println("정답! ");
+			
+		}
+		
+		else {
+			System.out.println("땡!");
+			System.out.println(randomKey);
+		}
+		
 		
 		
 		
