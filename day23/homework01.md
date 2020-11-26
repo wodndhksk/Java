@@ -1,7 +1,6 @@
 ```java
 package day23.homework;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -22,130 +21,101 @@ import java.util.TreeMap;
 //103         김장미      47       F        010-2512-7754
 //201         장아름      85       B        010-9966-3512
 //202         최영수      74       C        010-1111-3864
-class studentInfo {
-	
-	public void Info(String name, int average, String grade, String contact){
-		
-//		ArrayList<HashMap<String,Object>> list = new ArrayList<>();
-		
-		HashMap<String, Object> hashmap = new HashMap<>();
-		hashmap.put("name", name);
-		hashmap.put("average", average);
-		hashmap.put("grade", grade);
-		hashmap.put("contact", contact);
-	//	list.add(hashmap);
-		
-	}
-	
-}
 
-public class Test01 {
+
+public class Test02 {
+	
+	public static HashMap<String, Object> makeHashMapStudentInfo(String name, int average, String grade, String contact) {
+		HashMap<String ,Object> hashmap = new HashMap<>();
+		hashmap.put("name", "홍길동");
+		hashmap.put("average", 88);
+		hashmap.put("grade","B");
+		hashmap.put("contact","010-2222-1231");
+		
+		return hashmap;
+	}
 
 	public static void main(String[] args) {
 	
 		TreeMap<Integer, HashMap<String, Object>> treemap;
 		
-//		HashMap<String, Object> hashmap1 = new HashMap<>();
-//		HashMap<String, Object> hashmap2 = new HashMap<>();
-//		HashMap<String, Object> hashmap3 = new HashMap<>();
+		HashMap<String, Object> hashmap1 = new HashMap<>();
+		HashMap<String, Object> hashmap2 = new HashMap<>();
+		HashMap<String, Object> hashmap3 = new HashMap<>();
 		
-		studentInfo stu = new studentInfo();
-		ArrayList list = new ArrayList();
-		stu.Info("홍길동", 88, "B", "010-2222-1231");
-		stu.Info("김길동", 92, "A", "010-2231-1256");
-		stu.Info("김장미", 47, "F", "010-2512-7754");
+
+		int firstGrade = 101;
+		int secondGrade = 201;
+		int thirdGrade = 301;
+		int fourthGrade = 401;
+
 		
-		System.out.println(stu);
-//		
-////		101 : {"name":"홍길동", "average":88, "grade":"B", "contact":"010-2222-1231"},
-////		102 : {"name":"김길동", "average":92, "grade":"A", "contact":"010-2231-1256"},
-////		103 : {"name":"김장미", "average":47, "grade":"F", "contact":"010-2512-7754"},
+//		101 : {"name":"홍길동", "average":88, "grade":"B", "contact":"010-2222-1231"},
+//		102 : {"name":"김길동", "average":92, "grade":"A", "contact":"010-2231-1256"},
+//		103 : {"name":"김장미", "average":47, "grade":"F", "contact":"010-2512-7754"},
 
 		treemap = new TreeMap<>();
-//		hashmap1.put("name", "홍길동");
-//		hashmap1.put("average", 88);
-//		hashmap1.put("grade","B");
-//		hashmap1.put("contact","010-2222-1231");
-//		
-//		hashmap2.put("name", "김길동");
-//		hashmap2.put("average", 92);
-//		hashmap2.put("grade", "A");
-//		hashmap2.put("contact", "010-2231-1256");
-//		
-//		hashmap3.put("name", "김장미");
-//		hashmap3.put("average", 47);
-//		hashmap3.put("grade", "F");
-//		hashmap3.put("contact", "010-2512-7754");
+		treemap.put(firstGrade++, makeHashMapStudentInfo("홍길동", 88, "B", "010-222-1231" ));
+		treemap.put(firstGrade++, makeHashMapStudentInfo("김길동", 92, "A", "010-2231-1256" ));
+		treemap.put(firstGrade++, makeHashMapStudentInfo("김장미", 47, "F", "010-2512-7754" ));
 		
+			
+		Scanner sc = new Scanner(System.in);
 		
-//		treemap.put(101, stu.Info("홍길동", 88, "B", "010-2222-1231"));
-//		treemap.put(102, hashmap2);
-//		treemap.put(103, hashmap3);
-//		
-//		
-//				
-//		Scanner sc = new Scanner(System.in);
-//		
-//		int kor, eng, math, grade;
-//		int i=0;
-//		int avg;
-//		String tel , name;
-//		String testscore = "";
-//		
-//		HashMap<String, Object> hashmap4 = new HashMap<>();
-//		
-//			
-//			System.out.println("이름, 국,영,수,학년,전화번호 입력 : ");
-//			name = sc.next();
-//			kor = sc.nextInt();
-//			eng = sc.nextInt();
-//			math = sc.nextInt();
-//			grade = sc.nextInt();
-//			tel = sc.next();
-//			
-//			avg = (kor+eng+math)/3;
-//			
-//			if(avg >= 90) {
-//				testscore = "A";
-//			}
-//			else if(avg >=80) {
-//				testscore = "B";
-//			}
-//			else if(avg >=70) {
-//				testscore = "C";
-//			}
-//			else if(avg >= 60){
-//				testscore = "D";
-//			}
-//			else if(avg <60) {
-//				testscore = "F";
-//			}
-//			
-//			
-//			
-//			hashmap4.put("name", name);
-//			hashmap4.put("average", avg);
-//			hashmap4.put("grade", testscore);
-//			hashmap4.put("contact",tel);
-//			
-//			
-//			if(grade ==4) {
-//				treemap.put(401, hashmap4);		
-//			}
-//			else if(grade ==3) {
-//				treemap.put(301, hashmap4);		
-//			}
-//			else if(grade ==2) {
-//				treemap.put(201, hashmap4);		
-//			}
-//			else if(grade ==1) {
-//				treemap.put(101, hashmap4);		
-//			}
-//			
-//			System.out.println(treemap+"\n");
-//		
-//				
-//		
+		int kor, eng, math, grade;
+		int avg;
+		String tel , name;
+		String testscore = "";
+		
+		HashMap<String, Object> hashmap4 = new HashMap<>();
+		
+			for(int i = 0; i <3; i++) {
+				
+				System.out.println("이름, 국,영,수,학년,전화번호 입력 : ");
+				name = sc.next();
+				kor = sc.nextInt();
+				eng = sc.nextInt();
+				math = sc.nextInt();
+				grade = sc.nextInt();
+				tel = sc.next();    
+				
+				avg = (kor+eng+math)/3;
+				
+				if(avg >= 90) {
+					testscore = "A";
+				}
+				else if(avg >=80) {
+					testscore = "B";
+				}
+				else if(avg >=70) {
+					testscore = "C";
+				}
+				else if(avg >= 60){
+					testscore = "D";
+				}
+				else if(avg <60) {
+					testscore = "F";
+				}
+				
+				
+				
+				
+				
+				if(grade ==4) {
+					treemap.put(fourthGrade++,  makeHashMapStudentInfo(name, avg, testscore, tel ));		
+				}
+				else if(grade ==3) {
+					treemap.put(thirdGrade++, makeHashMapStudentInfo(name, avg, testscore, tel ));		
+				}
+				else if(grade ==2) {
+					treemap.put(secondGrade++, makeHashMapStudentInfo(name, avg, testscore, tel ));		
+				}
+				else if(grade ==1) {
+					treemap.put(firstGrade++, makeHashMapStudentInfo(name, avg, testscore, tel ));		
+				}
+			
+			}
+			System.out.println(treemap);
 		
 
 	}
@@ -153,5 +123,4 @@ public class Test01 {
 	
 
 }
-
 ```
