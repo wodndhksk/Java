@@ -27,10 +27,10 @@ public class Test02 {
 	
 	public static HashMap<String, Object> makeHashMapStudentInfo(String name, int average, String grade, String contact) {
 		HashMap<String ,Object> hashmap = new HashMap<>();
-		hashmap.put("name", "홍길동");
-		hashmap.put("average", 88);
-		hashmap.put("grade","B");
-		hashmap.put("contact","010-2222-1231");
+		hashmap.put("name", name);
+		hashmap.put("average", average);
+		hashmap.put("grade", grade);
+		hashmap.put("contact", contact);
 		
 		return hashmap;
 	}
@@ -39,11 +39,6 @@ public class Test02 {
 	
 		TreeMap<Integer, HashMap<String, Object>> treemap;
 		
-		HashMap<String, Object> hashmap1 = new HashMap<>();
-		HashMap<String, Object> hashmap2 = new HashMap<>();
-		HashMap<String, Object> hashmap3 = new HashMap<>();
-		
-
 		int firstGrade = 101;
 		int secondGrade = 201;
 		int thirdGrade = 301;
