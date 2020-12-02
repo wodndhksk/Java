@@ -1,6 +1,7 @@
 ```java
 package day28.homewokr;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
 
 public class Test01 {
 
-	private TreeMap<String, String> map = new TreeMap<>();
+	private TreeMap<String, String> map;
 	
 	private void save() {
 		// 현재 map을 word.w 에 덮어씀(저장)
@@ -27,8 +28,8 @@ public class Test01 {
 			oOut.writeObject(map);
 				
 			} catch (Exception e) {
-				
-				e.printStackTrace();
+				//System.out.println("Exception occur");
+				//e.printStackTrace();
 			}
 	}
 	private void load() {
@@ -42,9 +43,17 @@ public class Test01 {
 			
 		} catch (Exception e) {
 			
-			map = new TreeMap<>();
 			
-			e.printStackTrace();
+			if(map == null) { //EOFException
+				
+				//System.out.println("Exception occur"); 
+				map = new TreeMap<>();
+			}
+		
+		
+			
+			
+			//e.printStackTrace();
 		}
 		
 		
