@@ -166,16 +166,7 @@ public class Test01 {
 		new Test01();
 		
 		
-		
-		
-		try (FileOutputStream fOut = new FileOutputStream("word.w"); 
-			){		
-		
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 		
 	}
