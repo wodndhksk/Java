@@ -34,18 +34,12 @@ class MyButton extends JButton {
 	
 	private String menuName;
 	private int price;	
-//	JButton btn1;
-//	JTextArea text;
-	//Listener listener = new Listener();
+
 	
-	public MyButton(String menuName, int price) {
-		
+	public MyButton(String menuName, int price) {	
 		
 		this.menuName = menuName;
 		this.price = price;
-		
-//		this.btn1 = new JButton(this.menuName);
-//		this.text = new JTextArea(Integer.toString(this.price));
 		
 	}
 	public String getMenuName() {
@@ -71,28 +65,63 @@ public class Homework1 extends JFrame {
 	
 	MyButton myButton1, myButton2, myButton3, myButton4, myButton5;
 	Button button1, button2, button3, button4, button5;
-//	Listener listener = new Listener();
-//	JTextArea textArea = new JTextArea(10,1);
-	//JTextField text1, text2, text3, text4, text5;
+	
+	JTextArea textArea;
+	JTextArea textArea1;
+	Listener listener = new Listener();
+	int total = 0;
+	
+
 	
 	
 	
-//	class Listener implements ActionListener{
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			
-//		if(e.equals(button1.getName())) { //button.getName()인 "아메리카노" 가 눌렸으면
-//			textArea.setText(myButton1.getMenuName());
-//			textArea.setText(Integer.toString(myButton1.getPrice()));
-//			System.out.println("저장됨!");
-//		}
-//			
-//		
-//		
-//		}
-//		
-//	}
+	class Listener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		if(e.getSource() == button1) { //button.getName()인 "아메리카노" 가 눌렸으면
+			textArea.append(myButton1.getMenuName()+ " 가격 : "); //textArea 	에 메뉴이름 호출 
+			textArea.append(Integer.toString(myButton1.getPrice())+ "\n"); //textArea 에 메뉴의 가격 호출 
+			total += myButton1.getPrice();								// 총 결제액 계산 
+			textArea1.setText("총 결제액 : " +Integer.toString(total));	// 총 결제액 호출 
+			System.out.println("저장됨!");
+		}
+		else if(e.getSource() == button2) { //button.getName()인 "카페라떼" 가 눌렸으면
+			textArea.append(myButton2.getMenuName()+ " 가격 : ");
+			textArea.append(Integer.toString(myButton2.getPrice())+ "\n");
+			total += myButton2.getPrice();
+			textArea1.setText("총 결제액 : " +Integer.toString(total));
+			System.out.println("저장됨!");
+		}
+		else if(e.getSource() == button3) { //button.getName()인 "카푸치노" 가 눌렸으면
+			textArea.append(myButton3.getMenuName()+ " 가격 : ");  
+			textArea.append(Integer.toString(myButton3.getPrice())+ "\n");
+			total += myButton3.getPrice();
+			textArea1.setText("총 결제액 : " +Integer.toString(total));
+			System.out.println("저장됨!");
+		}
+		else if(e.getSource() == button4) { //button.getName()인 "바닐라 라떼" 가 눌렸으면
+			textArea.append(myButton4.getMenuName()+ " 가격 : ");
+			textArea.append(Integer.toString(myButton4.getPrice())+ "\n");
+			total += myButton4.getPrice();
+			textArea1.setText("총 결제액 : " +Integer.toString(total));
+			System.out.println("저장됨!");
+		}
+		else if(e.getSource() == button5) { //button.getName()인 "카라멜 마끼야또" 가 눌렸으면
+			textArea.append(myButton5.getMenuName()+ " 가격 : ");
+			textArea.append(Integer.toString(myButton5.getPrice())+ "\n");
+			total += myButton5.getPrice();
+			textArea1.setText("총 결제액 : " +Integer.toString(total));
+			System.out.println("저장됨!");
+		}
+	
+			
+		
+		
+		}
+		
+	}
 	
 	public void panelWest() {
 		JPanel panelWest = new JPanel();
@@ -107,18 +136,18 @@ public class Homework1 extends JFrame {
 		this.button4 = new Button("바닐라 라떼");
 		this.button5 = new Button("카라멜 마끼야또");
 		
-		// MyButton 클래스 생성자에 메뉴이름과 가격 담기 
-		myButton1 = new MyButton(button1.getName(), 4000);
-		myButton2 = new MyButton(button2.getName(), 4500);
-		myButton3 = new MyButton(button3.getName(), 4500);
-		myButton4 = new MyButton(button4.getName(), 5000);
-		myButton5 = new MyButton(button5.getName(), 6000);
+		// MyButton 클래스 생성자에 버튼이름 (label)과  가격 담기 
+		myButton1 = new MyButton(button1.getLabel(), 4000); 
+		myButton2 = new MyButton(button2.getLabel(), 4500);
+		myButton3 = new MyButton(button3.getLabel(), 4500);
+		myButton4 = new MyButton(button4.getLabel(), 5000);
+		myButton5 = new MyButton(button5.getLabel(), 6000);
 		// 이벤트 버튼객체 등록 
-//		button1.addActionListener(listener);
-//		button2.addActionListener(listener);
-//		button3.addActionListener(listener);
-//		button4.addActionListener(listener);
-//		button5.addActionListener(listener);
+		button1.addActionListener(listener);
+		button2.addActionListener(listener);
+		button3.addActionListener(listener);
+		button4.addActionListener(listener);
+		button5.addActionListener(listener);
 		
 		
 		
@@ -137,58 +166,55 @@ public class Homework1 extends JFrame {
 	
 	public void panelNorth() {  // 좌측 panel 메서드 
 		JPanel panelNorth = new JPanel();
-		panelNorth.setBackground(Color.GREEN);
-		panelNorth.setLayout(new GridLayout(1,3,10,10)); //GridLayout(행, 열, 간격, 간격)
-		panelNorth.add(new JButton("저장하기"));
-		panelNorth.add(new JButton("불러오기"));
-		panelNorth.add(new JButton("결제하기"));
 		
+		
+		//panelNorth.setBackground(Color.GREEN);
+		panelNorth.setLayout(new GridLayout(1,3,10,10)); //GridLayout(행, 열, 간격, 간격)
+		
+		JPanel panelNorthCenter = new JPanel();
+		JPanel panelEmpty = new JPanel(); // panelNortCenter의 왼쪽 공백용 
+		JPanel panelEmpty2 = new JPanel(); // panelNortCenter의 오른쪽 공백용 
+		panelNorthCenter.setBackground(Color.darkGray);
+		panelNorthCenter.setLayout(new GridLayout(1,3,10,10));
+		panelNorthCenter.setPreferredSize(new Dimension(100, 50));
+		panelNorthCenter.add(new JButton("저장하기"));
+		panelNorthCenter.add(new JButton("불러오기"));
+		panelNorthCenter.add(new JButton("결제하기"));
+		
+		panelNorth.add(panelEmpty);
+		panelNorth.add(panelNorthCenter);
+		panelNorth.add(panelEmpty2);
 		add(panelNorth, BorderLayout.NORTH);
 		
 	}
 	
-	public void panelCenter() {  //중앙 panel 메서드 
-		JTextArea textArea = new JTextArea(10,1);
+	public void textCenter() {  //중앙 JTextArea 메서드 
+		
+	    textArea = new JTextArea(7,1); //
+		textArea.setBackground(Color.LIGHT_GRAY);
 		textArea.setAlignmentX(CENTER_ALIGNMENT);
 		Label label = new Label();
 		label.setAlignment((int) CENTER_ALIGNMENT);
-//		JTextArea textArea = new JTextArea(10,1);
-		JPanel panelCenter = new JPanel();
-		panelCenter.setBackground(Color.lightGray);
-		panelCenter.setLayout(new GridLayout(10,1,10,10)); //GridLayout(행, 열, 간격, 간격)
-		
-		button1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				label.setText(myButton1.getMenuName());
-				System.out.println("아메리카노 저장함 ");
-				
-			}
-		});
-		
-		
-//		textArea.getText(myButton1.getMenuName());
-//		textArea.getText(Integer.toString(myButton1.getPrice()));
-//		
-//		textArea.setText(myButton2.getMenuName());
-//		textArea.setText(Integer.toString(myButton2.getPrice()));
-//		
-//		textArea.setText(myButton3.getMenuName());
-//		textArea.setText(Integer.toString(myButton3.getPrice()));
-//		
-//		textArea.setText(myButton4.getMenuName());
-//		textArea.setText(Integer.toString(myButton4.getPrice()));
-//		
-//		textArea.setText(myButton5.getMenuName());
-//		textArea.setText(Integer.toString(myButton5.getPrice()));
-		
-		
-		add(panelCenter, BorderLayout.CENTER);
+	
+//		button1.addActionListener(new ActionListener() { // button1 누를시 
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				textArea.append(button1.getName()+"\n");  // button1 누를 textArea 에 text 추가 
+//				System.out.println("아메리카노 저장함 ");
+//				
+//			}
+//		});
+	
+		add(textArea, BorderLayout.CENTER);
 		
 	}
 	
-	public void panelSouth() { // 하단부 panel 메서드 
+	public void textSouth() { // 하단부 textArea 메서드 
+		
+		textArea1 = new JTextArea(1,1);  
+
+		add(textArea1, BorderLayout.SOUTH);
 		
 	}
 	
@@ -203,7 +229,8 @@ public class Homework1 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 창 닫으면 빌드 종료
 		panelWest();
 		panelNorth();
-		panelCenter();
+		textCenter();
+		textSouth();
 		
 		setVisible(true);
 	}
