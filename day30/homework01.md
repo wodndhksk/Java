@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -27,6 +28,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.FileChooserUI;
+
+
 
 /*
  *  저장하기 누르면 현재선택한 메뉴만 텍스트 파일로 담기기 (저장) 
@@ -81,6 +84,8 @@ public class Homework1 extends JFrame {
 	JTextArea textArea1;
 	Listener listener = new Listener();
 	int total = 0;
+	
+	long nano = System.currentTimeMillis();
 //	JFileChooser chooser;
 	
 
@@ -94,35 +99,36 @@ public class Homework1 extends JFrame {
 			
 		if(e.getSource() == button1) { //button.getName()인 "아메리카노" 가 눌렸으면
 			textArea.append(myButton1.getMenuName()+ " 가격 : "); //textArea 	에 메뉴이름 호출 
-			textArea.append(Integer.toString(myButton1.getPrice())+ "\n"); //textArea 에 메뉴의 가격 호출 
+			textArea.append(Integer.toString(myButton1.getPrice())+"\t"+new SimpleDateFormat("HH:mm:ss").format(nano)+ "\n"); //textArea 에 메뉴의 가격 호출 
 			total += myButton1.getPrice();								// 총 결제액 계산 
 			textArea1.setText("총 결제액 : " +Integer.toString(total));	// 총 결제액 호출 
+			
 			System.out.println("저장됨!");
 		}
 		else if(e.getSource() == button2) { //button.getName()인 "카페라떼" 가 눌렸으면
 			textArea.append(myButton2.getMenuName()+ " 가격 : ");
-			textArea.append(Integer.toString(myButton2.getPrice())+ "\n");
+			textArea.append(Integer.toString(myButton2.getPrice())+ "\t"+new SimpleDateFormat("HH:mm:ss").format(nano)+"\n");
 			total += myButton2.getPrice();
 			textArea1.setText("총 결제액 : " +Integer.toString(total));
 			System.out.println("저장됨!");
 		}
 		else if(e.getSource() == button3) { //button.getName()인 "카푸치노" 가 눌렸으면
 			textArea.append(myButton3.getMenuName()+ " 가격 : ");  
-			textArea.append(Integer.toString(myButton3.getPrice())+ "\n");
+			textArea.append(Integer.toString(myButton3.getPrice())+ "\t"+new SimpleDateFormat("HH:mm:ss").format(nano)+"\n");
 			total += myButton3.getPrice();
 			textArea1.setText("총 결제액 : " +Integer.toString(total));
 			System.out.println("저장됨!");
 		}
 		else if(e.getSource() == button4) { //button.getName()인 "바닐라 라떼" 가 눌렸으면
 			textArea.append(myButton4.getMenuName()+ " 가격 : ");
-			textArea.append(Integer.toString(myButton4.getPrice())+ "\n");
+			textArea.append(Integer.toString(myButton4.getPrice())+"\t"+new SimpleDateFormat("HH:mm:ss").format(nano)+ "\n");
 			total += myButton4.getPrice();
 			textArea1.setText("총 결제액 : " +Integer.toString(total));
 			System.out.println("저장됨!");
 		}
 		else if(e.getSource() == button5) { //button.getName()인 "카라멜 마끼야또" 가 눌렸으면
 			textArea.append(myButton5.getMenuName()+ " 가격 : ");
-			textArea.append(Integer.toString(myButton5.getPrice())+ "\n");
+			textArea.append(Integer.toString(myButton5.getPrice())+"\t"+new SimpleDateFormat("HH:mm:ss").format(nano)+ "\n");
 			total += myButton5.getPrice();
 			textArea1.setText("총 결제액 : " +Integer.toString(total));
 			System.out.println("저장됨!");
@@ -233,7 +239,8 @@ public class Homework1 extends JFrame {
 	
 	public void textAreaSouth() { // 하단부 textArea 메서드 
 		
-		textArea1 = new JTextArea(1,1);  
+		textArea1 = new JTextArea(1,1); 
+		
 
 		add(textArea1, BorderLayout.SOUTH);
 		
