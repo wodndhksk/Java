@@ -209,7 +209,7 @@ public class Homework1 extends JFrame {
 		
 	}
 	
-	public void textCenter() {  //중앙 JTextArea 메서드 
+	public void textAreaCenter() {  //중앙 JTextArea 메서드 
 		
 	    textArea = new JTextArea(7,1); //
 		textArea.setBackground(Color.LIGHT_GRAY);
@@ -231,7 +231,7 @@ public class Homework1 extends JFrame {
 		
 	}
 	
-	public void textSouth() { // 하단부 textArea 메서드 
+	public void textAreaSouth() { // 하단부 textArea 메서드 
 		
 		textArea1 = new JTextArea(1,1);  
 
@@ -302,8 +302,8 @@ public class Homework1 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 창 닫으면 빌드 종료
 		panelWest();
 		panelNorth();
-		textCenter();
-		textSouth();
+		textAreaCenter();
+		textAreaSouth();
 		
 		setVisible(true);
 	}
