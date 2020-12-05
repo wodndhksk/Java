@@ -10,13 +10,23 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.FileChooserUI;
 
 /*
  *  저장하기 누르면 현재선택한 메뉴만 텍스트 파일로 담기기 (저장) 
@@ -65,11 +75,13 @@ public class Homework1 extends JFrame {
 	
 	MyButton myButton1, myButton2, myButton3, myButton4, myButton5;
 	Button button1, button2, button3, button4, button5;
+	JButton saveButton, openButton, deleteButton;
 	
 	JTextArea textArea;
 	JTextArea textArea1;
 	Listener listener = new Listener();
 	int total = 0;
+//	JFileChooser chooser;
 	
 
 	
@@ -123,7 +135,9 @@ public class Homework1 extends JFrame {
 		
 	}
 	
-	public void panelWest() {
+	
+	
+	public void panelWest() { //좌측 Panel
 		JPanel panelWest = new JPanel();
 		
 		panelWest.setBackground(Color.blue);
@@ -164,7 +178,7 @@ public class Homework1 extends JFrame {
 		
 	}
 	
-	public void panelNorth() {  // 좌측 panel 메서드 
+	public void panelNorth() {  // 맨위 panel 메서드 
 		JPanel panelNorth = new JPanel();
 		
 		
@@ -177,9 +191,16 @@ public class Homework1 extends JFrame {
 		panelNorthCenter.setBackground(Color.darkGray);
 		panelNorthCenter.setLayout(new GridLayout(1,3,10,10));
 		panelNorthCenter.setPreferredSize(new Dimension(100, 50));
-		panelNorthCenter.add(new JButton("저장하기"));
-		panelNorthCenter.add(new JButton("불러오기"));
-		panelNorthCenter.add(new JButton("결제하기"));
+		
+		
+		saveButton();
+		openButton();
+		deleteButton();
+		
+		
+		panelNorthCenter.add(saveButton);
+		panelNorthCenter.add(openButton);
+		panelNorthCenter.add(deleteButton);
 		
 		panelNorth.add(panelEmpty);
 		panelNorth.add(panelNorthCenter);
@@ -218,6 +239,58 @@ public class Homework1 extends JFrame {
 		
 	}
 	
+	public void saveButton() { //저장하기 버튼 
+		saveButton = new JButton("저장하기");
+		saveButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try (FileOutputStream fOut = new FileOutputStream("menulist.txt");
+						ObjectOutputStream oOut = new ObjectOutputStream(fOut);){
+					oOut.writeObject(textArea);
+					
+				} catch (Exception e1) {
+					//e1.printStackTrace();
+				} 
+				
+			}
+		});
+	}
+	public void openButton() {
+		openButton = new JButton("불러오기");
+		openButton.addActionListener(new ActionListener() {
+		JFileChooser chooser = new JFileChooser();
+		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+//				FileNameExtensionFilter filter = new FileNameExtensionFilter("txt"); //*.txt파일만 보이게 설정 
+//				chooser.setFileFilter(filter); 
+//				
+//				int ret = chooser.showOpenDialog(null);
+//				if(ret != JFileChooser.APPROVE_OPTION) {
+//					JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다.","경고",JOptionPane.WARNING_MESSAGE);
+//					
+//				}
+//				
+//				String filePath = chooser.getSelectedFile().getPath(); //파일 경로를 알아온다.
+				
+			}
+		});
+	}
+	public void deleteButton() {
+		deleteButton = new JButton("삭제하기");
+		deleteButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				textArea.setText(null);
+				textArea1.setText(null);
+				total = 0;
+				
+			}
+		});
+	}
 
 	public Homework1() {
 
@@ -234,6 +307,8 @@ public class Homework1 extends JFrame {
 		
 		setVisible(true);
 	}
+	
+	
 	
 	
 	
