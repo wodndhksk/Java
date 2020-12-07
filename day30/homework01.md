@@ -270,16 +270,20 @@ public class Homework1 extends JFrame {
 		
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				int ret = chooser.showOpenDialog(null);
 //				FileNameExtensionFilter filter = new FileNameExtensionFilter("txt"); //*.txt파일만 보이게 설정 
 //				chooser.setFileFilter(filter); 
-//				
-//				int ret = chooser.showOpenDialog(null);
-//				if(ret != JFileChooser.APPROVE_OPTION) {
-//					JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다.","경고",JOptionPane.WARNING_MESSAGE);
-//					
-//				}
-//				
-//				String filePath = chooser.getSelectedFile().getPath(); //파일 경로를 알아온다.
+				if(ret != JFileChooser.APPROVE_OPTION) {
+					JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다.","경고",JOptionPane.WARNING_MESSAGE);
+					
+				}
+				
+				String filePath = chooser.getSelectedFile().getPath(); //파일 경로를 알아온다.
+				System.out.println(filePath);
+				
 				
 			}
 		});
@@ -326,6 +330,5 @@ public class Homework1 extends JFrame {
 	}
 
 }
-
 
 ```
