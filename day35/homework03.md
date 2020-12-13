@@ -1,3 +1,4 @@
+### 포켓몬의 이름,레벨 입력, DB에 저장
 ```java
 package day35.homework;
 
@@ -80,6 +81,8 @@ public class homework01 {
 
 }
 ```
+
+### 이름을 입력받고 해당 정보를 DB에 조회한 뒤 출력, 없으면 '미등록'
 ```java
 package day35.homework;
 
