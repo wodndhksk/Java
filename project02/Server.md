@@ -32,6 +32,8 @@ class Thread1 extends Thread {
             while ((input = br.readLine()) != null) {
                 System.out.println("Client: " + input);
                 for (Socket eachSocket: sockets) {
+			if(eachSocket.equals(this.socket))
+                		continue;
                     PrintWriter pw = new PrintWriter(
                             new OutputStreamWriter(eachSocket.getOutputStream(), "UTF8"), true);
                     pw.println(input);
