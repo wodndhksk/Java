@@ -14,7 +14,13 @@
 
 #### 3. 잘한 점
 ```
+-Server를 각 Client들의 송수신을 위한 징검다리로 사용하였다. 각 Client들의 textfield의 getText값을 서버로 보내고 서버는 그값을 나머지 클라이언트에게 보낸다.
+  즉 값을 받을때는 해당 클라이언트가 보낸 값이 서버로 간 후 나머지 클라이언트들이 서버에서 그 해당 값을 받는다.
 
+-Socket을 ArrayList인 sockets에 담아서 ( sockets.add(socket); )을 while문 안에 넣어 무한정 socket을 받아들여 arrayList에 추가하여 1:N 채팅을 할 수 있도록 구현하였다. 
+  그리고 socket이 닫히면 해당 arraylist의 sockets를 remove 하는 코드도 추가시켜 데이터가 낭비되는 부분을 해결하였다.
+
+-Client에서
 ```
 #### 4. 힘들었던 점
 ```
