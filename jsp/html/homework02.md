@@ -1,3 +1,4 @@
+### html
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -45,4 +46,37 @@
 </div>
 </body>
 </html>
+```
+
+### Servlet
+```java
+package com.megait;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Quiz01")
+public class Quiz01 extends HttpServlet{
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String blood = req.getParameter("blood");
+		String telecom = req.getParameter("telecom");
+		String[] subject = req.getParameterValues("subject");
+		String result = req.getParameter("result");
+		
+		
+		System.out.println("blood : " + blood);
+		System.out.println("telecom : " + telecom);
+		for(int i=0; i<subject.length; i++)
+			System.out.println("subject : " + subject[i]);
+		System.out.println("result : " + result);
+	}
+
+}
+
 ```
